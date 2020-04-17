@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "./static/assets/bundles/js",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "module": "esnext",
+        "target": "es5",
+        "jsx": "react",
+        "resolveJsonModule": true,
+        "strict": true,
+        "lib": ["dom", "es5", "scripthost", "es2015", "es2016"]
+    }
+}
