@@ -4,7 +4,7 @@ import * as React from "react";
 import { hot } from "react-hot-loader/root";
 import { Provider } from "react-redux";
 import { Store } from "redux";
-import App from "../containers/App";
+import Routing from "../components/Routing";
 
 interface Props {
   store: Store;
@@ -17,7 +17,7 @@ class Root extends React.Component<Props> {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <App />
+          <Routing />
         </ConnectedRouter>
       </Provider>
     );

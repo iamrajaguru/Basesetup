@@ -4,4 +4,5 @@ export interface IUser {
   conformPassword: string;
   email: string;
   mobile: string;
+  nos: number;
 }
