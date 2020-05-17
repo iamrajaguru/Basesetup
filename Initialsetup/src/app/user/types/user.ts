@@ -1,8 +1,17 @@
 export interface ISearchFields {
-  // searchByName: string;
-  // searchByIngredients: string;
-  // searchByCategory: string;
-  // searchByVariety: string;
-  // searchType: string;
+  userInput: string;
+  searchBy: string;
   selectionType: any[];
+  itemList: IItems[];
+}
+// export interface IList {
+//   itemList: IItems[];
+// }
+export interface IItems {
+  _id: string;
+  itemName: string;
+  variety: string;
+  category: string;
+  ingredients: [];
+  procedure: [];
 }

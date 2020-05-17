@@ -83,6 +83,16 @@ export default class ListItem extends Component<IProps> {
                       onClick={this.deleteSelected(i._id)}
                     ></i>
                   </td>
+                  {i.pics ? (
+                    <td>
+                      <img
+                        src={i.pics}
+                        // style={{ height: "50px", width: "50px" }}
+                        className="imgStyle"
+                      />
+                      {console.log(i.pics)}
+                    </td>
+                  ) : null}
                 </tr>
               ))}
             </tbody>

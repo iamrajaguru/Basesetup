@@ -1,10 +1,7 @@
 import { ISearchFields } from "../types/user";
 const initialState: ISearchFields = {
-  // searchByName: "",
-  // searchByIngredients: "",
-  // searchByCategory: "",
-  // searchByVariety: "",
-  // searchType: "",
+  userInput: "",
+  searchBy: "",
   selectionType: [
     {
       key: "Name",
@@ -23,12 +20,15 @@ const initialState: ISearchFields = {
       value: "Category",
     },
   ],
+  itemList: [],
 };
 
 export default (state: ISearchFields = initialState, action: any) => {
   switch (action.type) {
-    // case "":
-    //   return { ...state };
+    case "USER_INPUT":
+      return { ...state, [action.key]: action.value };
+    case "UPDATE_LIST":
+      return { ...state, itemList: action.value };
     default:
       return state;
   }

@@ -4,7 +4,10 @@ module.exports = {
     app: "./src/app/main/index",
   },
   output: {
-    path: path.resolve(__dirname, "static/dist"),
+    path: path.resolve(
+      __dirname,
+      "../../../node/mongoNodeCon/Authtest/static/dist"
+    ),
     filename: "[name].bundle.js",
     publicPath: "/dist",
   },
@@ -29,3 +32,4 @@ module.exports = {
   },
   plugins: [],
 };
+//()

@@ -17,23 +17,11 @@ module.exports = {
     hot: true,
     open: true,
     port: 8080,
-    // proxy: {
-    //   "**": {
-    //     target: "http://localhost:8080/",
-    //     bypass: function (req, res, proxyOptions) {
-    //       if (req.url.startsWith("/assets/bundles/css")) {
-    //         return req.url;
-    //       }
-    //       if (req.url.startsWith("/assets/image")) {
-    //         return req.url;
-    //       }
-    //       if (req.method === "OPTIONS") {
-    //         res.statusCode = 200;
-    //         return "a";
-    //       }
-    //     },
-    //   },
-    // },
+    proxy: {
+      "**": {
+        target: "http://localhost:3000/",
+      },
+    },
     overlay: {
       warning: true,
       errors: true,
