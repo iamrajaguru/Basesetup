@@ -37,41 +37,42 @@ export default class ListItem extends Component<IProps> {
           <table className="table table-hover ">
             <thead className="thead-dark">
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Name</th>
-                <th scope="col">steps</th>
-                <th scope="col">Ingredients</th>
-                <th scope="col">Options</th>
+                <th scope="col" className="text-center">
+                  No
+                </th>
+                <th scope="col" className="text-center">
+                  Name
+                </th>
+                <th scope="col" className="text-center">
+                  steps
+                </th>
+                <th scope="col" className="text-center">
+                  Ingredients
+                </th>
+                <th scope="col" className="text-center">
+                  Options
+                </th>
+                <th scope="col" className="text-center">
+                  Images
+                </th>
               </tr>
             </thead>
             <tbody>
               {this.props.home.itemList.map((i: any, index: number) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{i.itemName}</td>
-                  <td>
+                  <td className="text-center">{index + 1}</td>
+                  <td className="text-center">{i.itemName}</td>
+                  <td className="text-center">
                     {i.procedure.map((p: any, index: number) => (
-                      <table key={index}>
-                        <tbody>
-                          <tr>
-                            <td>{p}</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <label className="text-center" key={index}>{p}</label>
                     ))}
                   </td>
                   <td>
                     {i.ingredients.map((p: any, index: number) => (
-                      <table key={index}>
-                        <tbody>
-                          <tr>
-                            <td>{p}</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <label className="text-center" key={index}>{p}</label>
                     ))}
                   </td>
-                  <td>
+                  <td className="text-center">
                     <Link to={`/dashboard/${i._id}`}>
                       <i
                         // onClick={this.editItem(i)}
@@ -84,7 +85,7 @@ export default class ListItem extends Component<IProps> {
                     ></i>
                   </td>
                   {i.pics ? (
-                    <td>
+                    <td className=" d-flex justify-content-center align-items-center">
                       <img
                         src={i.pics}
                         // style={{ height: "50px", width: "50px" }}

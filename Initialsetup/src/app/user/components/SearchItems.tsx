@@ -2,6 +2,7 @@ import * as React from "react";
 import { Component, Fragment } from "react";
 import { ISearchFields } from "../types/user";
 import { Link } from "react-router-dom";
+import history from "../../store/history";
 interface IProps {
   userScreen: ISearchFields;
   updateInputField: (key: string, value: string) => void;
@@ -20,104 +21,61 @@ class SearchItems extends Component<IProps> {
     console.log(key, e.target.value);
     this.props.updateInputField(key, e.target.value);
   };
+  submitNos = (id: string) => (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    history.push(`/selectedRecipe/${id}`);
+  };
   render() {
     console.log(this.props.userScreen, "user");
     return (
       <Fragment>
-        <div className="container">
-          <input
-            type="text"
-            value={this.props.userScreen.userInput}
-            onChange={this.updateUserInput("userInput")}
-          />
-          <select
-            className="btn btn-primary"
-            onChange={this.updateUserInput("searchBy")}
-            id="selection"
-          >
-            {/* <option value="Select">Select</option> */}
-            {this.props.userScreen.selectionType.map(
-              (i: any, index: number) => (
-                <option key={index} value={i.value}>
-                  {i.key}
-                </option>
-              )
-            )}
-          </select>
+        <div className="container ">
+          <div className="p-5 d-flex justify-content-center">
+            <input
+              type="text"
+              className="ibox"
+              value={this.props.userScreen.userInput}
+              onChange={this.updateUserInput("userInput")}
+            />
+            <select
+              className="btn btn-primary"
+              onChange={this.updateUserInput("searchBy")}
+              id="selection"
+            >
+              {/* <option value="Select">Select</option> */}
+              {this.props.userScreen.selectionType.map(
+                (i: any, index: number) => (
+                  <option key={index} value={i.value}>
+                    {i.key}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+          <div></div>
           <hr />
-          {this.props.userScreen.itemList.map((i: any, index: number) => (
-            <div key={index} className="card">
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="con-1">
-                    <small>Name</small>
-                    <small>{i.itemName} </small>
+          <div className="row">
+            {this.props.userScreen.itemList.map((i: any, index: number) => (
+              <div
+                key={index}
+                className="col-3 rl card"
+                onClick={() => this.submitNos(i._id)}
+              >
+                <Link to={`/selectedRecipe/${i._id}`}>
+                  <img src={i.pics} className="imgStyle" />
+                  <div className="overlay">
+                    <div className="textOnImg">NameCheck</div>
                   </div>
-                </div>
-
-                <div className="col-md-6">
-                  <img
-                    src={i.pics}
-                    // style={{ height: "50px", width: "50px" }}
-                    className="imgStyle"
-                  />
-                </div>
+                </Link>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Fragment>
     );
   }
 }
-{
-  /* 
-          //heretest
-          {this.props.userScreen.itemList.map((i: any, index: number) => (
-            <div key={index} className="card">
-              <div>{i.itemName}</div>
-              <div>
-                {i.procedure.map((p: any, index: number) => (
-                  <table key={index}>
-                    <tbody>
-                      <tr>
-                        <td>{p}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                ))}
-              </div>
-              <div>
-                {i.ingredients.map((p: any, index: number) => (
-                  <table key={index}>
-                    <tbody>
-                      <tr>
-                        <td>{p}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                ))}
-              </div>
 
-              {i.pics ? (
-                <div>
-                  <img
-                    src={i.pics}
-                    // style={{ height: "50px", width: "50px" }}
-                    className="imgStyle"
-                  />
-                  {console.log(i.pics)}
-                </div>
-              ) : null}
-            </div>
-          ))}//test ends */
-}
-{
-  /* <input type="submit"> */
-}
-//   </div>
-// </Fragment>
-//     );
-//   }
-// }
 export default SearchItems;

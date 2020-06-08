@@ -5,6 +5,7 @@ import AdminDashboard from "../../admin/containers/AdminDashboard";
 import ListItem from "../../admin/containers/HomeDashboard";
 import UsersScreen from "../../user/containers/SearchItems";
 import App from "../containers/App";
+import RecipeFullView from "../../user/containers/RecipeFullView";
 class Routing extends Component {
   render() {
     return (
@@ -19,6 +20,11 @@ class Routing extends Component {
             />
             <Route exact={true} path="/list" component={ListItem} />
             <Route exact={true} path="/home" component={UsersScreen} />
+            <Route
+              exact={true}
+              path={"/selectedRecipe/:id"}
+              component={RecipeFullView}
+            />
           </Route>
         </Switch>
       </Fragment>

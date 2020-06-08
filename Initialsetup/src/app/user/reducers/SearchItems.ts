@@ -21,6 +21,16 @@ const initialState: ISearchFields = {
     },
   ],
   itemList: [],
+  itemrecipe: {
+    itemName: "",
+    variety: "",
+    category: "veg",
+    ingredients: [],
+    procedure: [],
+    tempIng: "",
+    tempSteps: "",
+    pics: null,
+  },
 };
 
 export default (state: ISearchFields = initialState, action: any) => {
@@ -29,6 +39,8 @@ export default (state: ISearchFields = initialState, action: any) => {
       return { ...state, [action.key]: action.value };
     case "UPDATE_LIST":
       return { ...state, itemList: action.value };
+    case "GET_RECIPIE":
+      return { ...state, itemrecipe: action.value };
     default:
       return state;
   }

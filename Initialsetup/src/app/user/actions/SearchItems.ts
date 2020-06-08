@@ -11,6 +11,10 @@ export const updateItemList = (value: []) => ({
   type: "UPDATE_LIST",
   value,
 });
+export const getDispatch = (value: object) => ({
+  type: "GET_RECIPIE",
+  value,
+});
 export const getList = (): ThunkAction<
   void,
   ISearchFields,
@@ -20,4 +24,13 @@ export const getList = (): ThunkAction<
   let response = await axios.get("http://localhost:3000/food/getall");
   console.log("async call", response.data);
   dispatch(updateItemList(response.data));
+};
+export const getItemAndLoad = (
+  id: string
+): ThunkAction<void, string, null, Action<string>> => async (
+  dispath: Dispatch
+) => {
+  let response = await axios.get(`http://localhost:3000/food/getbyid/${id}`);
+  console.log(response.data,"lol")
+  dispath(getDispatch(response.data));
 };
